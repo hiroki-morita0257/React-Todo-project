@@ -1,10 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { App } from "./App";
 import "./styles/App.scss"; // ← Sass を使う前提。ファイルは後で作る
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+const root = createRoot(document.getElementById("root") as Element);
+root.render(
+  <StrictMode>
     <App />
-  </React.StrictMode>
+  </StrictMode>
 );

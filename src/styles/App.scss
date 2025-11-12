@@ -21,3 +21,22 @@ body,
     letter-spacing: 0.2px;
   }
 }
+
+.addTodo,
+.inProgress,
+.finishedTodo {
+  width: 600px;
+  height: 100%;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.title {
+  display: flex;
+  text-align: center;
+}
+
+.listRow {
+  display: flex;
+  align-items: center;
+}
