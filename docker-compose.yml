@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    # ローカルのコードをコンテナ内 /app に共有（マウント）
+    volumes:
+      - .:/app
+      # node_modules はコンテナ側に保持（ローカルと干渉しないように）
+      - /app/node_modules
+    ports:
+      # 左(ホスト):右(コンテナ)
+      - "5173:5173"
+    environment:
+      # WSL と Docker の組み合わせでホットリロードが効きやすくなるおまじない
+      - CHOKIDAR_USEPOLLING=true
