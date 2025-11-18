@@ -33,7 +33,9 @@ export const App = () => {
               placeholder="ToDoを入力"
               onChange={(e) => textUpdate(e.target.value)}
             />
-            <button onClick={addTodo}>追加</button>
+            <button type="button" onClick={addTodo}>
+              追加
+            </button>
           </form>
         </div>
 
