@@ -18,6 +18,7 @@ export const App = () => {
     const newTodo = { id: todos.length + 1, text: text, done: false };
     const newTodos = [...todos, newTodo];
     setTodos(newTodos);
+    setTodoText("");
   };
   console.log(todos[2]);
   return (
@@ -43,7 +44,13 @@ export const App = () => {
           <p className="title">inProgress</p>
           <ul>
             {todos.map((todo) => {
-              return <li>{todo.text}</li>;
+              return (
+                <li>
+                  {todo.text}
+                  <button>完了！</button>
+                  <button>削除</button>
+                </li>
+              );
             })}
             <li>
               <div className="listRow">
