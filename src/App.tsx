@@ -39,56 +39,60 @@ export const App = () => {
 
   console.log(todos);
   return (
-    <div>
-      <div className="app">
-        <h1>Todo App</h1>
+    <div className="min-h-screen bg-slate-900 text-white">
+      <div className="flex bg-blue-900 w-full">
+        <h1 className="items-center w-100 text-">Todo App</h1>
+      </div>
 
-        <div className="addTodo">
-          <form action="">
-            <input
-              value={todoText}
-              type="text"
-              placeholder="ToDoを入力"
-              onChange={(e) => textUpdate(e.target.value)}
-            />
-            <button type="button" onClick={addTodo}>
-              追加
-            </button>
-          </form>
-        </div>
+      <div className="border-box-">
+        <form action="">
+          <input
+            value={todoText}
+            type="text"
+            placeholder="ToDoを入力"
+            onChange={(e) => textUpdate(e.target.value)}
+          />
+          <button
+            className="btn btn-outline btn-primary"
+            type="button"
+            onClick={addTodo}
+          >
+            追加
+          </button>
+        </form>
+      </div>
 
-        <div className="inProgress">
-          <p className="title">inProgress</p>
-          <ul>
-            {todos
-              .filter((todo) => !todo.done)
-              .map((todo) => {
-                return (
-                  <li>
-                    {todo.text}
-                    <button onClick={() => toggleTodo(todo.id)}>完了！</button>
-                    <button onClick={() => deleteTodo(todo.id)}>削除</button>
-                  </li>
-                );
-              })}
-          </ul>
-        </div>
+      <div className="inProgress">
+        <p className="title">inProgress</p>
+        <ul>
+          {todos
+            .filter((todo) => !todo.done)
+            .map((todo) => {
+              return (
+                <li>
+                  {todo.text}
+                  <button onClick={() => toggleTodo(todo.id)}>完了！</button>
+                  <button onClick={() => deleteTodo(todo.id)}>削除</button>
+                </li>
+              );
+            })}
+        </ul>
+      </div>
 
-        <div className="finishedTodo">
-          <p className="title">finishedTodo</p>
-          <ul>
-            {todos
-              .filter((todo) => todo.done)
-              .map((todo) => {
-                return (
-                  <li>
-                    {todo.text}
-                    <button onClick={() => toggleTodo(todo.id)}>戻す</button>
-                  </li>
-                );
-              })}
-          </ul>
-        </div>
+      <div className="finishedTodo">
+        <p className="title">finishedTodo</p>
+        <ul>
+          {todos
+            .filter((todo) => todo.done)
+            .map((todo) => {
+              return (
+                <li>
+                  {todo.text}
+                  <button onClick={() => toggleTodo(todo.id)}>戻す</button>
+                </li>
+              );
+            })}
+        </ul>
       </div>
     </div>
   );
