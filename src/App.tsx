@@ -71,8 +71,12 @@ export const App = () => {
               return (
                 <li>
                   {todo.text}
-                  <button onClick={() => toggleTodo(todo.id)}>完了！</button>
-                  <button onClick={() => deleteTodo(todo.id)}>削除</button>
+                  <button className="btn" onClick={() => toggleTodo(todo.id)}>
+                    完了！
+                  </button>
+                  <button className="btn" onClick={() => deleteTodo(todo.id)}>
+                    削除
+                  </button>
                 </li>
               );
             })}
@@ -87,7 +91,9 @@ export const App = () => {
               return (
                 <li>
                   {todo.text}
-                  <button onClick={() => toggleTodo(todo.id)}>戻す</button>
+                  <button className="btn" onClick={() => toggleTodo(todo.id)}>
+                    戻す
+                  </button>
                 </li>
               );
             })}
