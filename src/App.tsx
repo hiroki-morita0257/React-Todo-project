@@ -3,9 +3,14 @@ import { useState } from "react";
 export const App = () => {
   const [todoText, setTodoText] = useState("");
   const [todos, setTodos] = useState([
-    { id: 1, text: "Todo1", done: false },
-    { id: 2, text: "Todo2", done: false },
+    { id: 0, text: "Todo1", done: false },
+    { id: 1, text: "Todo2", done: false },
+    { id: 2, text: "Todo3", done: true },
   ]);
+  // const [finTodos, setFinTodos] = useState([
+  //   { id: 0, text: "Todo1", done: false },
+  //   { id: 1, text: "Todo2", done: false },
+  // ]);
 
   const textUpdate = (e: string) => {
     //動作確認済み
@@ -15,12 +20,24 @@ export const App = () => {
   const addTodo = () => {
     const text = todoText.trim();
     if (!text) return;
-    const newTodo = { id: todos.length + 1, text: text, done: false };
+    const newTodo = { id: Date.now(), text: text, done: false };
     const newTodos = [...todos, newTodo];
     setTodos(newTodos);
     setTodoText("");
   };
-  console.log(todos[2]);
+  const toggleTodo = (id: number) => {
+    const target = todos.find((todo) => todo.id === id);
+    if (!target) return;
+    const newTodo = { id: id, text: target.text, done: !target.done };
+    const newTodos = [...todos.filter((todo) => todo != target), newTodo];
+    setTodos(newTodos);
+  };
+  const deleteTodo = (id: number) => {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  };
+
+  console.log(todos);
   return (
     <div>
       <div className="app">
@@ -43,34 +60,33 @@ export const App = () => {
         <div className="inProgress">
           <p className="title">inProgress</p>
           <ul>
-            {todos.map((todo) => {
-              return (
-                <li>
-                  {todo.text}
-                  <button>完了！</button>
-                  <button>削除</button>
-                </li>
-              );
-            })}
-            <li>
-              <div className="listRow">
-                <p>やること１</p>
-                <button>完了！</button>
-                <button>削除</button>
-              </div>
-            </li>
+            {todos
+              .filter((todo) => !todo.done)
+              .map((todo) => {
+                return (
+                  <li>
+                    {todo.text}
+                    <button onClick={() => toggleTodo(todo.id)}>完了！</button>
+                    <button onClick={() => deleteTodo(todo.id)}>削除</button>
+                  </li>
+                );
+              })}
           </ul>
         </div>
 
         <div className="finishedTodo">
           <p className="title">finishedTodo</p>
           <ul>
-            <li>
-              <div className="listRow">
-                <p></p>
-                <button>戻す</button>
-              </div>
-            </li>
+            {todos
+              .filter((todo) => todo.done)
+              .map((todo) => {
+                return (
+                  <li>
+                    {todo.text}
+                    <button onClick={() => toggleTodo(todo.id)}>戻す</button>
+                  </li>
+                );
+              })}
           </ul>
         </div>
       </div>
