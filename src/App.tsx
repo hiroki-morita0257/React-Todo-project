@@ -39,12 +39,13 @@ export const App = () => {
 
   console.log(todos);
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
-      <div className="flex bg-blue-900 w-full">
-        <h1 className="items-center w-100 text-">Todo App</h1>
+    <div className="">
+      <div className="navbar bg-[#f8f2ff] shadow-xl justify-center fixed top-2 left-5 right-5 z-50 border-b-2 border-primary rounded-2xl">
+        <a className="btn btn-ghost normal-case text-xl text-primary">
+          Todo App
+        </a>
       </div>
-
-      <div className="border-box-">
+      <div className="pt-20">
         <form action="">
           <input
             value={todoText}
@@ -53,7 +54,7 @@ export const App = () => {
             onChange={(e) => textUpdate(e.target.value)}
           />
           <button
-            className="btn btn-outline btn-primary"
+            className="btn btn-soft btn-info text-white"
             type="button"
             onClick={addTodo}
           >
@@ -61,7 +62,6 @@ export const App = () => {
           </button>
         </form>
       </div>
-
       <div className="inProgress">
         <p className="title">inProgress</p>
         <ul>
@@ -78,7 +78,6 @@ export const App = () => {
             })}
         </ul>
       </div>
-
       <div className="finishedTodo">
         <p className="title">finishedTodo</p>
         <ul>
